@@ -14,3 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'admin'], function(){
+
+    Auth::routes();
+
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::get('/atribuir', 'AssignController@index')->name('assign');
+    Route::post('/atribuir', 'AssignController@store');
+
+});
+
+
