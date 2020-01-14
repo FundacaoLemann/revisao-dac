@@ -47,7 +47,7 @@ class AssignController extends Controller
         if($request->projects && $request->reviewers) {
 
             foreach($request->projects as $projectId)
-                Project::find($projectId)->reviewers()->sync($request->reviewers);
+                Project::find($projectId)->reviewers()->syncWithoutDetaching($request->reviewers);
 
         }
 
