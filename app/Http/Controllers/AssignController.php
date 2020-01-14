@@ -36,7 +36,9 @@ class AssignController extends Controller
             ->orderBy('name')
             ->get();
 
-        return view('admin.assign', compact('projects', 'reviewers'));
+        $estados = config('constants.estados');
+
+        return view('admin.assign', compact('projects', 'reviewers', 'estados'));
     }
 
     public function store(Request $request)

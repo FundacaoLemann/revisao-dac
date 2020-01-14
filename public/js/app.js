@@ -49550,9 +49550,6 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip();
-});
 
 /***/ }),
 
@@ -49598,6 +49595,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+__webpack_require__(/*! ./scripts */ "./resources/js/scripts.js");
 
 /***/ }),
 
@@ -49667,6 +49666,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/scripts.js":
+/*!*********************************!*\
+  !*** ./resources/js/scripts.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+  $('.filter-estado, .filter-project-assigned').change(function () {
+    var estado = $('.filter-estado').val();
+    var assigned = $('.filter-project-assigned').val();
+    filterProjects(estado, assigned);
+  });
+  $('.filter-reviewer-assigned').change(function () {
+    var assigned = $('.filter-reviewer-assigned').val();
+    filterReviewer(assigned);
+  });
+});
+
+function filterProjects(estado, assigned) {
+  $('.project-row').addClass('d-none');
+  var dataFilter = '';
+
+  if (estado) {
+    dataFilter += "[data-estado='" + estado + "']";
+  }
+
+  if (assigned) {
+    dataFilter += "[data-assigned='" + assigned + "']";
+  }
+
+  $('.project-row' + dataFilter).removeClass('d-none');
+}
+
+function filterReviewer(assigned) {
+  if (assigned) {
+    $('.reviewer-row').addClass('d-none');
+    $(".reviewer-row[data-assigned='" + assigned + "']").removeClass('d-none');
+  } else {
+    $('.reviewer-row').removeClass('d-none');
+  }
+}
 
 /***/ }),
 
