@@ -17,12 +17,27 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin'], function(){
 
-    Auth::routes();
+    Auth::routes(['register' => false, 'reset' => false]);
 
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::get('/atribuir', 'AssignController@index')->name('assign');
     Route::post('/atribuir', 'AssignController@store');
+
+});
+
+Route::prefix('/revisor')->name('reviewer.')->namespace('Reviewer')->group(function(){
+
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::namespace('Auth')->group(function(){
+
+        //Login Routes
+        Route::get('/login','LoginController@showLoginForm')->name('login');
+        Route::post('/login','LoginController@login');
+        Route::post('/logout','LoginController@logout')->name('logout');
+
+    });
 
 });
 

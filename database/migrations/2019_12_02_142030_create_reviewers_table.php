@@ -15,9 +15,10 @@ class CreateReviewersTable extends Migration
     {
         Schema::create('reviewers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('email');
-            $table->string('password');
+            $table->string('name', 100);
+            $table->string('email')->unique();
+            $table->string('password', 255);
+            $table->rememberToken();
             $table->string('state');
             $table->string('status');
             $table->timestamps();

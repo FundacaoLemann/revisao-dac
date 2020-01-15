@@ -46,6 +46,11 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'reviewer' => [
+            'driver' => 'session',
+            'provider' => 'reviewers',
+        ]
     ],
 
     /*
@@ -70,6 +75,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+
+         'reviewers' => [
+             'driver' => 'eloquent',
+             'model' => App\Reviewer::class,
+         ]
 
         // 'users' => [
         //     'driver' => 'database',
@@ -99,6 +109,12 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        'reviewers' => [
+            'provider' => 'reviewers',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ]
     ],
 
     /*
