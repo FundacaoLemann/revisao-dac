@@ -3,15 +3,23 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Project extends Model
 {
 
-    protected $estados;
-
-    public function __construct()
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
     {
-        $this->estados = config("constants.estados");
+        parent::boot();
+
+        static::addGlobalScope('valido', function (Builder $builder) {
+            $builder->where('valido', '=',  1);
+        });
     }
 
     public function reviewers()
@@ -21,6 +29,8 @@ class Project extends Model
 
     public function getDepartamentoEstadoAttribute($value)
     {
-        return $this->estados[$value];
+        $estados = config("constants.estados");
+
+        return $estados[$value];
     }
 }
