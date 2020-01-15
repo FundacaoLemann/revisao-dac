@@ -2,15 +2,65 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Dashboard</div>
+        <div class="row">
+            <div class="col-8">
 
-                    <div class="card-body">
-                        Oi Gente eu sou um revisor!
+                <h1>Dashboard</h1>
+
+                <div class="card-deck my-4">
+                    <div class="card text-white bg-primary mb-3" style="max-width: 12rem;">
+                        <div class="card-body text-center">
+                            <h2 class="card-title">{{ $projects->count() }}</h2>
+                            <p class="card-text">Projeto(s)<br>atribuído(s)</p>
+                        </div>
+                    </div>
+
+                    <div class="card text-white bg-success mb-3" style="max-width: 12rem;">
+                        <div class="card-body text-center">
+                            <h2 class="card-title">123</h2>
+                            <p class="card-text">Projeto(s)<br>revisado(s)</p>
+                        </div>
                     </div>
                 </div>
+
+                <h3>Projetos</h3>
+                <hr class="my-2">
+
+                <div class="col-md-4 pl-1">
+                    <label for="projectsStatus">Status</label>
+                    <select class="form-control" id="projectsStatus">
+                        <option selected value="">Selecionar</option>
+                        <option>Revisado</option>
+                        <option>Não revisado</option>
+                    </select>
+                </div>
+
+                <table class="table mt-4">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col" width="80%">Projeto</th>
+                        <th scope="col" class="text-right">Nota</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @forelse($projects as $project)
+                        <tr>
+                            <th scope="row">{{ $project->id }}</th>
+                            <td data-toggle="tooltip" data-placement="top" title="{{ $project->projeto_nome }}">{{ Str::limit($project->projeto_nome, 45) }}</td>
+                            <td class="text-right">-</td>
+                            <td><button type="button" class="btn btn-secondary btn-sm">Revisar</button></td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="4">Nenhum registro encontrado.</td>
+                        </tr>
+                    @endforelse
+
+                    </tbody>
+                </table>
+
             </div>
         </div>
     </div>

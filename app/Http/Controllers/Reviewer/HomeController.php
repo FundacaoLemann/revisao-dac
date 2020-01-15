@@ -25,6 +25,9 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        return view('reviewer.home');
+
+        $projects = auth('reviewer')->user()->projects;
+
+        return view('reviewer.home', compact('projects'));
     }
 }
