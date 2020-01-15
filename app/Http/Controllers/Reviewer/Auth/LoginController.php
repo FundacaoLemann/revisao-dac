@@ -41,8 +41,7 @@ class LoginController extends Controller
         if(Auth::guard('reviewer')->attempt($request->only('email','password'),$request->filled('remember'))){
             //Authentication passed...
             return redirect()
-                ->intended(route('reviewer.home'))
-                ->with('status','You are Logged in as Admin!');
+                ->intended(route('reviewer.home'));
         }
         //Authentication failed...
         return $this->loginFailed();
@@ -73,7 +72,7 @@ class LoginController extends Controller
         ];
         //custom validation error messages.
         $messages = [
-            'email.exists' => 'These credentials do not match our records.',
+            'email.exists' => trans('auth.failed'),
         ];
         //validate the request.
         $request->validate($rules,$messages);
@@ -88,7 +87,7 @@ class LoginController extends Controller
         return redirect()
             ->back()
             ->withInput()
-            ->with('error','Login failed, please try again!');
+            ->with('error',trans('auth.failed'));
     }
 
 }
