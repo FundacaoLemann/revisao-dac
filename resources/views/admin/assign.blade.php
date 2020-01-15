@@ -78,7 +78,7 @@
                                     </table>
                                 </div>
 
-                                <div class="col-4">
+                                <div class="col-4 h-100 overflow-auto">
                                     <table class="table table-hover">
                                         <thead>
                                         <tr>
