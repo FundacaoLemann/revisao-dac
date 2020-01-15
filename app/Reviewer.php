@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Arr;
 
 class Reviewer extends Authenticatable
 {
@@ -31,5 +32,10 @@ class Reviewer extends Authenticatable
     public function projects()
     {
         return $this->belongsToMany('App\Project');
+    }
+
+    public function getProjectsListAttribute()
+    {
+        return implode(' / ', Arr::pluck($this->projects->toArray(), 'projeto_nome'));
     }
 }

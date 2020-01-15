@@ -66,7 +66,7 @@
                                                     <th scope="row"><input type="checkbox" name="projects[]" value="{{ $project->id }}"></th>
                                                     <td data-toggle="tooltip" data-placement="top" title="{{ $project->projeto_nome }}">{{ Str::limit($project->projeto_nome, 45) }}</td>
                                                     <td class="text-center">{{ $project->departamento_estado }}</td>
-                                                    <td class="text-right">{{ $project->reviewers_count }}</td>
+                                                    <td class="text-right" data-toggle="tooltip" data-placement="top" title="{{ $project->reviewers_list }}">{{ $project->reviewers_count }}</td>
                                                 </tr>
                                             @empty
                                                 <tr>
@@ -92,7 +92,7 @@
                                             <tr class="reviewer-row {{ $reviewer->projects_count ? 'table-info' : '' }}" data-assigned="{{ $reviewer->projects_count ? 'true' : 'false' }}">
                                                 <th scope="row"><input type="checkbox" name="reviewers[]" value="{{ $reviewer->id }}"></th>
                                                 <td data-toggle="tooltip" data-placement="top" title="{{ $reviewer->name }}">{{ Str::limit($reviewer->name, 20) }}</td>
-                                                <td class="text-right">{{ $reviewer->projects_count }}</td>
+                                                <td data-toggle="tooltip" data-placement="top" title="{{ $reviewer->projects_list }}" class="text-right">{{ $reviewer->projects_count }}</td>
                                             </tr>
                                         @empty
                                             <tr>

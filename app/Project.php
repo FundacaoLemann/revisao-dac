@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Arr;
 
 class Project extends Model
 {
@@ -32,5 +33,10 @@ class Project extends Model
         $estados = config("constants.estados");
 
         return $estados[$value];
+    }
+
+    public function getReviewersListAttribute()
+    {
+        return implode(' / ', Arr::pluck($this->reviewers->toArray(), 'name'));
     }
 }
