@@ -25,7 +25,12 @@ class Project extends Model
 
     public function reviewers()
     {
-        return $this->belongsToMany('App\Reviewer');
+        return $this->belongsToMany('App\Reviewers');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany('App\Review');
     }
 
     public function getDepartamentoEstadoAttribute($value)
@@ -39,4 +44,10 @@ class Project extends Model
     {
         return Arr::pluck($this->reviewers->toArray(), 'name');
     }
+
+    public function addReview($data)
+    {
+        return $this->reviews()->create($data);
+    }
+
 }

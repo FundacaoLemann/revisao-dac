@@ -28,16 +28,17 @@ Route::group(['prefix' => 'admin'], function(){
 
 Route::prefix('/revisor')->name('reviewer.')->namespace('Reviewer')->group(function(){
 
-    Route::get('/home', 'HomeController@index')->name('home');
-
     Route::namespace('Auth')->group(function(){
-
-        //Login Routes
         Route::get('/login','LoginController@showLoginForm')->name('login');
         Route::post('/login','LoginController@login');
         Route::post('/logout','LoginController@logout')->name('logout');
-
     });
+
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::get('/projeto/{project}', 'ProjectController@index')->name('project');
+
+    Route::post('/projeto/{project}', 'ProjectController@store');
 
 });
 

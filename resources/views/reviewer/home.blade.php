@@ -17,7 +17,7 @@
 
                     <div class="card text-white bg-success mb-3" style="max-width: 12rem;">
                         <div class="card-body text-center">
-                            <h2 class="card-title">123</h2>
+                            <h2 class="card-title">0</h2>
                             <p class="card-text">Projeto(s)<br>revisado(s)</p>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                             <th scope="row">{{ $project->id }}</th>
                             <td data-toggle="tooltip" data-placement="top" title="{{ $project->projeto_nome }}">{{ Str::limit($project->projeto_nome, 45) }}</td>
                             <td class="text-right">-</td>
-                            <td><button type="button" class="btn btn-secondary btn-sm">Revisar</button></td>
+                            <td><a href="/revisor/projeto/{{ $project->id }}" role="button" class="btn btn-secondary btn-sm" aria-pressed="true">Revisar</a></td>
                         </tr>
                     @empty
                         <tr>
