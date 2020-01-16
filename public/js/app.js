@@ -49678,6 +49678,12 @@ __webpack_require__.r(__webpack_exports__);
 
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();
+  $('[data-toggle="popover"]').popover({
+    html: true
+  });
+  $('.popover-dismiss').popover({
+    trigger: 'focus'
+  });
   $('.filter-estado, .filter-project-assigned').change(function () {
     var estado = $('.filter-estado').val();
     var assigned = $('.filter-project-assigned').val();

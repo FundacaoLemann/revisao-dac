@@ -37,6 +37,6 @@ class Project extends Model
 
     public function getReviewersListAttribute()
     {
-        return implode(' / ', Arr::pluck($this->reviewers->toArray(), 'name'));
+        return Arr::pluck($this->reviewers->toArray(), 'name');
     }
 }

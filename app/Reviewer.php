@@ -34,8 +34,4 @@ class Reviewer extends Authenticatable
         return $this->belongsToMany('App\Project');
     }
 
-    public function getProjectsListAttribute()
-    {
-        return implode(' / ', Arr::pluck($this->projects->toArray(), 'projeto_nome'));
-    }
 }

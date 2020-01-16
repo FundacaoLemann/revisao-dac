@@ -66,7 +66,12 @@
                                                     <th scope="row"><input type="checkbox" name="projects[]" value="{{ $project->id }}"></th>
                                                     <td data-toggle="tooltip" data-placement="top" title="{{ $project->projeto_nome }}">{{ Str::limit($project->projeto_nome, 45) }}</td>
                                                     <td class="text-center">{{ $project->departamento_estado }}</td>
-                                                    <td class="text-right" data-toggle="tooltip" data-placement="top" title="{{ $project->reviewers_list }}">{{ $project->reviewers_count }}</td>
+                                                    <td class="text-right">
+                                                        @if($project->reviewers_count > 0)
+                                                            <a tabindex="0" class="btn btn-sm btn-link" role="button" data-toggle="popover" data-trigger="focus" title="Revisores atribuídos" data-content="@component('components.popover', ['data' => $project->reviewers, 'field' => 'name'])@endcomponent">(ver)</a>
+                                                        @endif
+                                                        {{ $project->reviewers_count }}
+                                                    </td>
                                                 </tr>
                                             @empty
                                                 <tr>
@@ -92,7 +97,12 @@
                                             <tr class="reviewer-row {{ $reviewer->projects_count ? 'table-info' : '' }}" data-assigned="{{ $reviewer->projects_count ? 'true' : 'false' }}">
                                                 <th scope="row"><input type="checkbox" name="reviewers[]" value="{{ $reviewer->id }}"></th>
                                                 <td data-toggle="tooltip" data-placement="top" title="{{ $reviewer->name }}">{{ Str::limit($reviewer->name, 20) }}</td>
-                                                <td data-toggle="tooltip" data-placement="top" title="{{ $reviewer->projects_list }}" class="text-right">{{ $reviewer->projects_count }}</td>
+                                                <td class="text-right">
+                                                    @if($reviewer->projects_count > 0)
+                                                        <a tabindex="0" class="btn btn-sm btn-link" role="button" data-toggle="popover" data-trigger="focus" title="Projetos atribuídos" data-content="@component('components.popover', ['data' => $reviewer->projects, 'field' => 'projeto_nome'])@endcomponent">(ver)</a>
+                                                    @endif
+                                                    {{ $reviewer->projects_count }}
+                                                </td>
                                             </tr>
                                         @empty
                                             <tr>
@@ -103,7 +113,6 @@
                                     </table>
                                 </div>
                             </div>
-
 
                         </div>
                     </div>

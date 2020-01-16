@@ -1,6 +1,14 @@
 $(function () {
 
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $('[data-toggle="popover"]').popover({
+        html: true
+    });
+
+    $('.popover-dismiss').popover({
+        trigger: 'focus'
+    });
 
     $('.filter-estado, .filter-project-assigned').change(function(){
 
