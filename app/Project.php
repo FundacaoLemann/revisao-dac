@@ -25,7 +25,7 @@ class Project extends Model
 
     public function reviewers()
     {
-        return $this->belongsToMany('App\Reviewers');
+        return $this->belongsToMany('App\Reviewer');
     }
 
     public function reviews()

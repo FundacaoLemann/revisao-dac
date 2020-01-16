@@ -15,7 +15,13 @@ class HomeController extends Controller
 
     public function index(){
 
-        $projects = auth('reviewer')->user()->projects;
+        $projects = auth('reviewer')
+            ->user()
+            ->projects()
+            ->with(['reviews' => function ($query) {
+                $query->where('reviewer_id', auth('reviewer')->id());
+            }])
+            ->get();
 
         return view('reviewer.home', compact('projects'));
     }
