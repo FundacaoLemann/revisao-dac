@@ -17,6 +17,10 @@ class ProjectController extends Controller
 
     public function index(Project $project)
     {
+        if(!auth()->user()->projects->contains('id', $project->id)) {
+            abort(403);
+        }
+
         $review = $project->reviews()
             ->where('reviewer_id', auth('reviewer')->id())
             ->first();
