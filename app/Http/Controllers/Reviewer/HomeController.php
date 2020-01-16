@@ -13,8 +13,8 @@ class HomeController extends Controller
         $this->middleware('auth:reviewer');
     }
 
-    public function index(){
-
+    public function index()
+    {
         $projects = auth('reviewer')
             ->user()
             ->projects()
@@ -24,5 +24,10 @@ class HomeController extends Controller
             ->get();
 
         return view('reviewer.home', compact('projects'));
+    }
+
+    public function rubricas()
+    {
+        return view('reviewer.rubricas');
     }
 }
