@@ -14,9 +14,21 @@
             <div class="col-8 h-100">
                 <div class="jumbotron h-100 overflow-auto pt-4">
                     <h2>{{ $project->projeto_nome }}</h2>
-                    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                    <p class="lead text-justify">{{ $project->projeto_descricao }}</p>
                     <hr class="my-4">
-                    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                    <h3>Parceiros</h3>
+                    @forelse($project->partners as $partner)
+                        <p>{{ $partner->nome }}</p>
+                    @empty
+                        <p>Nenhum parceiro.</p>
+                    @endforelse
+
+                    <h3>Candidados</h3>
+                    @forelse($project->candidates as $candidate)
+                        <p>{{ $candidate->nome }}</p>
+                    @empty
+                        <p>Nenhum candidato.</p>
+                    @endforelse
                 </div>
             </div>
             <div class="col-4">

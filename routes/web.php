@@ -40,6 +40,10 @@ Route::prefix('/revisor')->name('reviewer.')->namespace('Reviewer')->group(funct
 
     Route::post('/projeto/{project}', 'ProjectController@store');
 
+    Route::get('/rubricas', function () {
+        return view('reviewer.rubricas');
+    })->name('rubricas');
+
 });
 
 

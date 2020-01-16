@@ -40,7 +40,7 @@
 
                         @auth('reviewer')
                             <li class="nav-item"><a class="nav-link" href="{{ route('reviewer.home') }}">Dashboard</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Rúbricas</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('reviewer.rubricas') }}">Rubricas</a></li>
                         @endauth
                     </ul>
 

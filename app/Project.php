@@ -33,6 +33,16 @@ class Project extends Model
         return $this->hasMany('App\Review');
     }
 
+    public function candidates()
+    {
+        return $this->hasMany('App\Candidate');
+    }
+
+    public function partners()
+    {
+        return $this->hasMany('App\Partner');
+    }
+
     public function getDepartamentoEstadoAttribute($value)
     {
         $estados = config("constants.estados");
