@@ -49693,6 +49693,9 @@ $(function () {
     var assigned = $('.filter-reviewer-assigned').val();
     filterReviewer(assigned);
   });
+  $('.filter-reviewer-project').change(function () {
+    filterReviewerProject($(this).val());
+  });
 });
 
 function filterProjects(estado, assigned) {
@@ -49716,6 +49719,15 @@ function filterReviewer(assigned) {
     $(".reviewer-row[data-assigned='" + assigned + "']").removeClass('d-none');
   } else {
     $('.reviewer-row').removeClass('d-none');
+  }
+}
+
+function filterReviewerProject(reviewed) {
+  if (reviewed) {
+    $('.reviewer-project-row').addClass('d-none');
+    $(".reviewer-project-row[data-reviewed='" + reviewed + "']").removeClass('d-none');
+  } else {
+    $('.reviewer-project-row').removeClass('d-none');
   }
 }
 

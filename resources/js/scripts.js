@@ -27,6 +27,10 @@ $(function () {
 
     });
 
+    $('.filter-reviewer-project').change(function(){
+        filterReviewerProject($(this).val());
+    });
+
 });
 
 function filterProjects(estado, assigned)
@@ -56,3 +60,15 @@ function filterReviewer(assigned)
         $('.reviewer-row').removeClass('d-none');
     }
 }
+
+function filterReviewerProject(reviewed)
+{
+    if(reviewed) {
+        $('.reviewer-project-row').addClass('d-none');
+
+        $(".reviewer-project-row[data-reviewed='" + reviewed + "']").removeClass('d-none');
+    } else {
+        $('.reviewer-project-row').removeClass('d-none');
+    }
+}
+
