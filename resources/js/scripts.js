@@ -19,6 +19,15 @@ $(function () {
 
     });
 
+    $('.filter-estado-dashboard, .filter-status-project').change(function(){
+
+        var estado = $('.filter-estado-dashboard').val();
+        var projectStatus = $('.filter-status-project').val();
+
+        filterProjectsDashboard(estado, projectStatus);
+
+    });
+
     $('.filter-reviewer-assigned').change(function(){
 
         var assigned = $('.filter-reviewer-assigned').val();
@@ -72,3 +81,19 @@ function filterReviewerProject(reviewed)
     }
 }
 
+function filterProjectsDashboard(estado, projectStatus)
+{
+    $('.project-row').addClass('d-none');
+
+    var dataFilter = '';
+
+    if(estado) {
+        dataFilter += "[data-estado='" + estado + "']";
+    }
+
+    if(projectStatus) {
+        dataFilter += "[data-project-status='" + projectStatus + "']";
+    }
+
+    $('.project-row' + dataFilter).removeClass('d-none');
+}

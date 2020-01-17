@@ -44,14 +44,22 @@
 
                 <hr class="my-2">
 
-{{--                <div class="col-md-4 pl-1">--}}
-{{--                    <label for="projectsStatus">Status</label>--}}
-{{--                    <select class="form-control filter-reviewer-project" id="projectsStatus">--}}
-{{--                        <option selected value="">Selecionar</option>--}}
-{{--                        <option value="true">Revisado</option>--}}
-{{--                        <option value="false">Não revisado</option>--}}
-{{--                    </select>--}}
-{{--                </div>--}}
+                <form class="form-inline my-4">
+
+                    <select class="form-control my-1 mr-sm-2 filter-estado-dashboard" id="projectsStatus">
+                        <option selected value="">Estado</option>
+                        @foreach($estados as $estado)
+                            <option value="{{ $estado }}">{{ $estado }}</option>
+                        @endforeach
+                    </select>
+
+                    <select class="form-control my-1 mr-sm-2 filter-status-project" id="projectsEstado">
+                        <option selected value="">Status</option>
+                        <option value="aguardando_atribuicao">Aguardando atribuição</option>
+                        <option value="aguardando_revisao">Aguardando revisão</option>
+                        <option value="revisado">Revisado</option>
+                    </select>
+                </form>
 
                 <table class="table mt-4">
                     <thead class="thead-light">
@@ -65,7 +73,7 @@
                     </thead>
                     <tbody>
                     @forelse($projects as $project)
-                        <tr class="">
+                        <tr class="project-row" data-estado="{{ $project->departamento_estado }}" data-project-status="{{ $project->status }}">
                             <th scope="row">{{ $project->id }}</th>
                             <td data-toggle="tooltip" data-placement="top" title="{{ $project->projeto_nome }}">{{ Str::limit($project->projeto_nome, 70) }}</td>
                             <td class="text-center">{{ $project->departamento_estado }}</td>

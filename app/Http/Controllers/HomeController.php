@@ -27,7 +27,9 @@ class HomeController extends Controller
 
         $projectsNotAssigned = Project::doesntHave('reviewers')->count();
 
-        return view('admin.dashboard', compact('projects', 'quantityReviews', 'projectsNotAssigned'));
+        $estados = config('constants.estados');
+
+        return view('admin.dashboard', compact('projects', 'quantityReviews', 'projectsNotAssigned', 'estados'));
     }
 
     public function export()
