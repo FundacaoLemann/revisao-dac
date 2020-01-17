@@ -50,7 +50,7 @@
                             <th scope="row">{{ $project->id }}</th>
                             <td data-toggle="tooltip" data-placement="top" title="{{ $project->projeto_nome }}">{{ Str::limit($project->projeto_nome, 45) }}</td>
                             <td class="text-right">{{ ($project->reviews->isNotEmpty()) ? $project->reviews[0]->score_avg : '-' }}</td>
-                            <td><a href="/revisor/projeto/{{ $project->id }}" role="button" class="btn btn-secondary btn-sm" aria-pressed="true">Revisar</a></td>
+                            <td class="text-center"><a href="/revisor/projeto/{{ $project->id }}" role="button" class="btn btn-sm {{ ($project->reviews->isNotEmpty()) ? 'btn-success' : 'btn-warning' }}" aria-pressed="true">{{ ($project->reviews->isNotEmpty()) ? 'Revisado' : 'Revisar' }}</a></td>
                         </tr>
                     @empty
                         <tr>
