@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use Illuminate\Http\Request;
+use App\Exports\ProjectsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class HomeController extends Controller
 {
@@ -21,6 +23,13 @@ class HomeController extends Controller
             ->get();
 
         return view('admin.dashboard', compact('projects'));
+    }
+
+    public function export()
+    {
+
+        return Excel::download(new ProjectsExport, 'projects.xls');
+
     }
 
 }

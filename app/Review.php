@@ -8,10 +8,10 @@ class Review extends Model
 {
     protected $guarded = [];
 
-    protected $appends = ['score_avg'];
+    protected $appends = ['score_sum'];
 
-    public function getScoreAvgAttribute()
+    public function getScoreSumAttribute()
     {
-        return collect([$this->relevance, $this->alignment, $this->viability, $this->innovation])->avg();
+        return collect([$this->relevance, $this->alignment, $this->viability, $this->innovation])->sum();
     }
 }

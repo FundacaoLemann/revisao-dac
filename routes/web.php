@@ -24,6 +24,8 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('/atribuir', 'AssignController@index')->name('assign');
     Route::post('/atribuir', 'AssignController@store');
 
+    Route::get('/export', 'HomeController@export')->name('export');
+
 });
 
 Route::prefix('/revisor')->name('reviewer.')->namespace('Reviewer')->group(function(){

@@ -37,9 +37,9 @@
                     </div>
                 </div>
 
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between align-items-baseline">
                     <h3 class="my-2">Projetos</h3>
-                    <button href="#" type="button" class="btn btn-primary text-white">Download (.xls)</button>
+                    <a href="{{ route('export') }}" class="btn btn-primary text-white">Download (.xls)</a>
                 </div>
 
                 <hr class="my-2">
