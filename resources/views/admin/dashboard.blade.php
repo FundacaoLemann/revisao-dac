@@ -17,21 +17,21 @@
 
                     <div class="card text-white bg-info mb-3" style="max-width: 12rem;">
                         <div class="card-body text-center">
-                            <h2 class="card-title">-</h2>
+                            <h2 class="card-title">{{ $projectsNotAssigned }}</h2>
                             <p class="card-text">Aguardando<br>atribuição</p>
                         </div>
                     </div>
 
                     <div class="card text-white bg-danger mb-3" style="max-width: 12rem;">
                         <div class="card-body text-center">
-                            <h2 class="card-title">-</h2>
+                            <h2 class="card-title">{{ $projects->count() - $quantityReviews }}</h2>
                             <p class="card-text">Aguardando<br>revisão</p>
                         </div>
                     </div>
 
                     <div class="card text-white bg-success mb-3" style="max-width: 12rem;">
                         <div class="card-body text-center">
-                            <h2 class="card-title">-</h2>
+                            <h2 class="card-title">{{ $quantityReviews }}</h2>
                             <p class="card-text">Inscrições<br>revisadas</p>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                             <td data-toggle="tooltip" data-placement="top" title="{{ $project->projeto_nome }}">{{ Str::limit($project->projeto_nome, 70) }}</td>
                             <td class="text-center">{{ $project->departamento_estado }}</td>
                             <td class="text-center">{{ $project->reviewers_count }}</td>
-                            <td class="text-center">-</td>
+                            <td class="text-center">@component('components.status', ['status' => $project->status])@endcomponent</td>
                         </tr>
                     @empty
                         <tr>

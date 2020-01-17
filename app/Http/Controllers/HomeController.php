@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\Review;
 use Illuminate\Http\Request;
 use App\Exports\ProjectsExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -22,7 +23,11 @@ class HomeController extends Controller
             ->orderBy('projeto_nome')
             ->get();
 
-        return view('admin.dashboard', compact('projects'));
+        $quantityReviews = Review::distinct('project_id')->count();
+
+        $projectsNotAssigned = Project::doesntHave('reviewers')->count();
+
+        return view('admin.dashboard', compact('projects', 'quantityReviews', 'projectsNotAssigned'));
     }
 
     public function export()

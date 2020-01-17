@@ -48,6 +48,26 @@ class Project extends Model
         return Arr::pluck($this->reviewers->toArray(), 'name');
     }
 
+    public function getStatusAttribute()
+    {
+
+        $reviewers = $this->reviewers()->count();
+
+        if($reviewers == 0)
+            return 'aguardando_atribuicao';
+
+        $reviews = $this->reviews()->count();
+
+        if($reviewers == $reviews) {
+            return 'revisado';
+        } else {
+            return 'aguardando_revisao';
+        }
+
+        return '-';
+
+    }
+
     public function addReview($data)
     {
         return $this->reviews()->create($data);
