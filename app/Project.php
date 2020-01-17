@@ -43,13 +43,6 @@ class Project extends Model
         return $this->hasMany('App\Partner');
     }
 
-    public function getDepartamentoEstadoAttribute($value)
-    {
-        $estados = config("constants.estados");
-
-        return $estados[$value];
-    }
-
     public function getReviewersListAttribute()
     {
         return Arr::pluck($this->reviewers->toArray(), 'name');
