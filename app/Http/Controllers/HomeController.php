@@ -27,9 +27,9 @@ class HomeController extends Controller
 
     public function export()
     {
+        $fileName = 'ProjectsDAC-'.date('Ymd-His').'.xls';
 
-        return Excel::download(new ProjectsExport, 'projects.xls');
-
+        return Excel::download(new ProjectsExport, $fileName);
     }
 
 }
