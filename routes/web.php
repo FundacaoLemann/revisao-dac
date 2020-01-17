@@ -42,6 +42,8 @@ Route::prefix('/revisor')->name('reviewer.')->namespace('Reviewer')->group(funct
 
     Route::post('/projeto/{project}', 'ProjectController@store');
 
+    Route::get('/projeto/export/{project}', 'ProjectController@export');
+
     Route::get('/rubricas', 'HomeController@rubricas')->name('rubricas');
 
 });

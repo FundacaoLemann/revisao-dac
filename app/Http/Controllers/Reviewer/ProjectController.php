@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Project;
 use App\Review;
 use Illuminate\Http\Request;
+use App\Exports\ProjectExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProjectController extends Controller
 {
@@ -26,6 +28,18 @@ class ProjectController extends Controller
             ->first();
 
         return view('reviewer.project', compact('project', 'review'));
+    }
+
+    public function export(Project $project)
+    {
+        if(!auth()->user()->projects->contains('id', $project->id)) {
+            abort(403);
+        }
+
+        return view('exports.project', compact('project'));
+
+        //return Excel::download(new ProjectExport($project), 'invoices.pdf');
+
     }
 
     public function store(Project $project, Request $request)
