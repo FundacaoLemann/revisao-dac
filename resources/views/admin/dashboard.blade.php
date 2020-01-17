@@ -24,7 +24,7 @@
 
                     <div class="card text-white bg-danger mb-3" style="max-width: 12rem;">
                         <div class="card-body text-center">
-                            <h2 class="card-title">{{ $projects->count() - $quantityReviews }}</h2>
+                            <h2 class="card-title">{{ ( $projects->count() - $projectsNotAssigned ) - $quantityReviews }}</h2>
                             <p class="card-text">Aguardando<br>revisão</p>
                         </div>
                     </div>
