@@ -42,7 +42,7 @@
                     <div class="card vh-100">
                         <div class="card-header d-flex justify-content-between">
                             <h3 class="my-2">Projetos/Revisores</h3>
-                            <button type="submit" class="btn btn-info">Atribuir</button>
+                            <button type="submit" class="btn btn-info text-white">Atribuir</button>
                         </div>
 
                         <div class="card-body h-100">

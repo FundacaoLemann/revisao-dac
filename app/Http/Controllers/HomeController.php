@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Project;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,7 +15,12 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('admin.dashboard');
+        $projects = Project::
+            withCount('reviewers')
+            ->orderBy('projeto_nome')
+            ->get();
+
+        return view('admin.dashboard', compact('projects'));
     }
 
 }
