@@ -67,7 +67,7 @@
                         <th scope="col">#</th>
                         <th scope="col" width="60%">Projeto</th>
                         <th scope="col" class="text-center">Estado</th>
-                        <th scope="col" class="text-center">Revisores</th>
+                        <th scope="col" class="text-center">Revisor(es)</th>
                         <th scope="col" class="text-center">Status</th>
                     </tr>
                     </thead>
@@ -77,7 +77,12 @@
                             <th scope="row">{{ $project->id }}</th>
                             <td data-toggle="tooltip" data-placement="top" title="{{ $project->projeto_nome }}">{{ Str::limit($project->projeto_nome, 70) }}</td>
                             <td class="text-center">{{ $project->departamento_estado }}</td>
-                            <td class="text-center">{{ $project->reviewers_count }}</td>
+                            <td class="text-center">
+                                @if($project->reviewers_count > 0)
+                                    <a tabindex="0" class="btn btn-sm btn-link" role="button" data-toggle="popover" data-trigger="focus" title="Revisor(es) atribuído(s)" data-content="@component('components.popover', ['data' => $project->reviewers, 'field' => 'name'])@endcomponent">(ver)</a>
+                                @endif
+                                {{ $project->reviewers_count }}
+                            </td>
                             <td class="text-center">@component('components.status', ['status' => $project->status])@endcomponent</td>
                         </tr>
                     @empty

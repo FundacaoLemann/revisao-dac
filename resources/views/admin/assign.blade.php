@@ -68,7 +68,7 @@
                                                     <td class="text-center">{{ $project->departamento_estado }}</td>
                                                     <td class="text-right">
                                                         @if($project->reviewers_count > 0)
-                                                            <a tabindex="0" class="btn btn-sm btn-link" role="button" data-toggle="popover" data-trigger="focus" title="Revisores atribuídos" data-content="@component('components.popover', ['data' => $project->reviewers, 'field' => 'name'])@endcomponent">(ver)</a>
+                                                            <a tabindex="0" class="btn btn-sm btn-link" role="button" data-toggle="popover" data-trigger="focus" title="Revisor(es) atribuído(s)" data-content="@component('components.popover', ['data' => $project->reviewers, 'field' => 'name'])@endcomponent">(ver)</a>
                                                         @endif
                                                         {{ $project->reviewers_count }}
                                                     </td>
@@ -99,7 +99,7 @@
                                                 <td data-toggle="tooltip" data-placement="top" title="{{ $reviewer->name }}">{{ Str::limit($reviewer->name, 20) }}</td>
                                                 <td class="text-right">
                                                     @if($reviewer->projects_count > 0)
-                                                        <a tabindex="0" class="btn btn-sm btn-link" role="button" data-toggle="popover" data-trigger="focus" title="Projetos atribuídos" data-content="@component('components.popover', ['data' => $reviewer->projects, 'field' => 'projeto_nome'])@endcomponent">(ver)</a>
+                                                        <a tabindex="0" class="btn btn-sm btn-link" role="button" data-toggle="popover" data-trigger="focus" title="Projeto(s) atribuído(s)" data-content="@component('components.popover', ['data' => $reviewer->projects, 'field' => 'projeto_nome'])@endcomponent">(ver)</a>
                                                     @endif
                                                     {{ $reviewer->projects_count }}
                                                 </td>
