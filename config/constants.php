@@ -30,6 +30,19 @@ return [
         'tfa_906' => 'SP',
         'tfa_907' => 'SE',
         'tfa_908' => 'TO',
+    ],
+
+    'publico_alvo' => [
+        'projeto_publico_fund_1'        => 'Alunos do Fundamental 1 (6-10 anos)',
+        'projeto_publico_fund_2'        => 'Alunos do Fundamental 2 (11-14 anos)',
+        'projeto_publico_em'            => 'Alunos do Ensino Médio (15-18 anos)',
+        'projeto_publico_mag_lic'       => 'Alunos de magistério e/ ou de licenciatura',
+        'projeto_publico_professores'   => 'Professores escolares',
+        'projeto_publico_coordenadores' => 'Coordenadores Pedagógicos',
+        'projeto_publico_diretores'     => 'Diretores de escola',
+        'projeto_publico_familias'      => 'Famílias',
+        'projeto_publico_publico'       => 'Público geral',
+        'projeto_publico_outro'         => 'Outro:'
     ]
 
 ];

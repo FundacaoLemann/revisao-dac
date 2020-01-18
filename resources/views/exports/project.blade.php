@@ -33,7 +33,7 @@
 
                         <div class="col-md-6">
                             <label class="font-weight-bold bg-light p-1 rounded">Qual é o público alvo?</label>
-                            <p class="p-1">{{ $project->projeto_publico }} {{ $project->projeto_publico_outro  }}</p>
+                            @component('components.publico', ['publico' => $project->projeto_publico, 'publico_outro' => $project->projeto_publico_outro])@endcomponent
                         </div>
 
                         <!-- SECTION -->

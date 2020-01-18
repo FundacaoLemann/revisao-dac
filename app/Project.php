@@ -48,6 +48,23 @@ class Project extends Model
         return Arr::pluck($this->reviewers->toArray(), 'name');
     }
 
+    public function getProjetoPublicoAttribute($value)
+    {
+        $publicoParsed = [];
+
+        if($value) {
+            $publicoLabels = config('constants.publico_alvo');
+
+            $publicoCollect = collect(explode(',', $value));
+
+            $publicoParsed = $publicoCollect->map(function ($item) use ($publicoLabels) {
+                return $publicoLabels[trim($item)];
+            });
+        }
+
+        return $publicoParsed;
+    }
+
     public function getStatusAttribute()
     {
 
