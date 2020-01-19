@@ -44,7 +44,16 @@ class ProjectController extends Controller
 
     public function store(Project $project, Request $request)
     {
-        $project->addReview($request->toArray());
+        $review = Review::find($request->id);
+
+        $data = $request->except(['_token']);
+
+        if($review) {
+            $review->update($data);
+        } else {
+            $project->addReview($data);
+        }
+
         return redirect(route('reviewer.home'));
     }
 
