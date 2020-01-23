@@ -21,6 +21,7 @@ class HomeController extends Controller
             ->with(['reviews' => function ($query) {
                 $query->where('reviewer_id', auth('reviewer')->id());
             }])
+            ->orderBy('projeto_nome')
             ->get();
 
         return view('reviewer.home', compact('projects'));

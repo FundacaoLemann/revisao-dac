@@ -5,17 +5,32 @@ namespace App\Http\Controllers;
 use App\Candidate;
 use App\Partner;
 use App\Project;
+use App\Reviewer;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function index($projectId)
+    {
+        $this->middleware('auth');
+
+        $project = Project::with('reviewers')->find($projectId);
+
+        $reviewers = Reviewer::orderBy('name')
+            ->withCount('projects')
+            ->get();
+
+        return view('admin.project', compact(['project', 'reviewers']));
+    }
+
+    public function update(Project $project, Request $request)
+    {
+        $project->reviewers()->sync($request->reviewers);
+
+        return redirect()->route('home')->with('success', 'Projetos atribuidos com sucesso.');
+    }
+
     public function store(Request $request)
     {
         $fields = $request->all();

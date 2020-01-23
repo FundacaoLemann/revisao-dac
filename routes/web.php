@@ -21,6 +21,10 @@ Route::group(['prefix' => 'admin'], function(){
 
     Route::get('/home', 'HomeController@index')->name('home');
 
+    Route::get('/projeto/{project}', 'ProjectController@index')->name('project');
+    Route::post('/projeto/{project}', 'ProjectController@update');
+
+
     Route::get('/atribuir', 'AssignController@index')->name('assign');
     Route::post('/atribuir', 'AssignController@store');
 

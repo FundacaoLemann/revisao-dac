@@ -63,7 +63,7 @@
 
                                             @forelse($projects as $project)
                                                 <tr class="project-row {{ $project->reviewers_count ? 'table-info' : '' }}" data-estado="{{ $project->departamento_estado }}" data-assigned="{{ $project->reviewers_count ? 'true' : 'false' }}">
-                                                    <th scope="row"><input type="checkbox" name="projects[]" value="{{ $project->id }}"></th>
+                                                    <th scope="row"><input type="checkbox" name="projects[]" value="{{ $project->id }}" @if($project->status == 'revisado') disabled @endif></th>
                                                     <td data-toggle="tooltip" data-placement="top" title="{{ $project->projeto_nome }}">{{ Str::limit($project->projeto_nome, 45) }}</td>
                                                     <td class="text-center">{{ $project->departamento_estado }}</td>
                                                     <td class="text-right">
@@ -88,7 +88,7 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Revisor</th>
+                                            <th scope="col">Revisor(a)</th>
                                             <th scope="col" class="text-right">Qtd. Projetos</th>
                                         </tr>
                                         </thead>
@@ -99,7 +99,7 @@
                                                 <td data-toggle="tooltip" data-placement="top" title="{{ $reviewer->name }}">{{ Str::limit($reviewer->name, 20) }}</td>
                                                 <td class="text-right">
                                                     @if($reviewer->projects_count > 0)
-                                                        <a tabindex="0" class="btn btn-sm btn-link" role="button" data-toggle="popover" data-trigger="focus" title="Projeto(s) atribuído(s)" data-content="@component('components.popover', ['data' => $reviewer->projects, 'field' => 'projeto_nome'])@endcomponent">(ver)</a>
+                                                        <a tabindex="0" class="btn btn-sm btn-link" role="button" data-toggle="popover" data-trigger="focus" title="Projeto(s) atribuído(s)" data-content="@component('components.popover', ['data' => $reviewer->projects->sortBy('projeto_nome'), 'field' => 'projeto_nome'])@endcomponent">(ver)</a>
                                                     @endif
                                                     {{ $reviewer->projects_count }}
                                                 </td>
