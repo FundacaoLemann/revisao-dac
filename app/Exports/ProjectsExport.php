@@ -18,6 +18,7 @@ class ProjectsExport implements FromArray, WithHeadings
             'O projeto será implementado em qual rede de ensino?',
             'Nome do primeiro candidato',
             'E-mail principal para contato',
+            'Nome Revisor(a)',
             'Relevância',
             'Alinhamento com AC',
             'Viabilidade',
@@ -26,6 +27,7 @@ class ProjectsExport implements FromArray, WithHeadings
             'Recomenda este projeto como finalista?',
             'Comentários para candidatos',
             'Comentários para comite avaliador',
+            'Nome Revisor(a)',
             'Relevância',
             'Alinhamento com AC',
             'Viabilidade',
@@ -34,6 +36,7 @@ class ProjectsExport implements FromArray, WithHeadings
             'Recomenda este projeto como finalista?',
             'Comentários para candidatos',
             'Comentários para comite avaliador',
+            'Nome Revisor(a)',
             'Relevância',
             'Alinhamento com AC',
             'Viabilidade',
@@ -75,6 +78,9 @@ class ProjectsExport implements FromArray, WithHeadings
 
                 foreach($project->reviews as $review) {
 
+                    $reviewer = $review->reviewer()->first();
+
+                    $data[$i][] = $reviewer->name;
                     $data[$i][] = (string) $review->relevance;
                     $data[$i][] = (string) $review->alignment;
                     $data[$i][] = (string) $review->viability;
