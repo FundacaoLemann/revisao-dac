@@ -17,7 +17,7 @@
                 <h3>Relevância</h3>
                 <p class="lead">Dimensões a serem analisadas:</p>
                 <ul class="list-unstyled ml-3">
-                    <li class="my-3">a) Público-alvo: A proposta deve trabalhar diretamente com alunos entre 5 a 18 anos que frequentam escolas públicas ou que frequentam escolas vinculadas a uma fundação ou associação organização filantrópica, por exemplo o Sistema S, Centro Paula Souza, Institutos Federais, escolas da FEBEM, etc.</li>
+                    <li class="my-3">a) Público-alvo: A proposta deve trabalhar diretamente com alunos entre 5 a 18 anos que frequentam escolas públicas ou que frequentam escolas vinculadas a uma fundação ou associação organização filantrópica, por exemplo o Sistema S, Centro Paula Souza, Institutos Federais, escolas da Fundação Casa, etc.</li>
                     <li class="my-3">b) Envolvimento de 3 níveis decisórios no ambiente escolar: professor, gestão escolar e rede de ensino. A proposta explica o papel de cada um dos candidatos? Até que ponto o perfil de cada candidato demonstra um histórico de experiências relevantes?</li>
                     <li class="my-3">c) Profundidade: Com que profundidade a proposta traria um impacto na aprendizagem criativa deste ecossistema de pessoas? Até que ponto o projeto proposto pelo professor avança a integração de aprendizagem criativa com o currículo? A direção escolar propõem apenas uma reunião pedagógica para conscientizar os colegas do projeto ou planeja ações sistemáticas de desenvolvimento? A secretaria pretende apenas anunciar o projeto pelos meios de comunicação da rede ou propõe encontros, eventos, oficinas, etc. para fomentar a adesão em outras unidades escolares?</li>
                 </ul>
