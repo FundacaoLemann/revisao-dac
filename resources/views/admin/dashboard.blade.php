@@ -24,14 +24,14 @@
 
                     <div class="card text-white bg-danger mb-3" style="max-width: 12rem;">
                         <div class="card-body text-center">
-                            <h2 class="card-title">{{ ( $projects->count() - $projectsNotAssigned ) - $quantityReviews }}</h2>
+                            <h2 class="card-title">{{ ( $projects->count() - $projectsNotAssigned ) - $quantityProjectsRevised }}</h2>
                             <p class="card-text">Aguardando<br>revisão</p>
                         </div>
                     </div>
 
                     <div class="card text-white bg-success mb-3" style="max-width: 12rem;">
                         <div class="card-body text-center">
-                            <h2 class="card-title">{{ $quantityReviews }}</h2>
+                            <h2 class="card-title">{{ $quantityProjectsRevised }}</h2>
                             <p class="card-text">Inscrições<br>revisadas</p>
                         </div>
                     </div>

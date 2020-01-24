@@ -23,13 +23,17 @@ class HomeController extends Controller
             ->orderBy('projeto_nome')
             ->get();
 
-        $quantityReviews = Review::distinct('project_id')->count();
+        $quantityProjectsRevised = $projects->countBy(function ($item) {
+            return $item->status == 'revisado';
+        });
+
+        $quantityProjectsRevised = (isset($quantityProjectsRevised[1])) ? $quantityProjectsRevised[1] : 0;
 
         $projectsNotAssigned = Project::doesntHave('reviewers')->count();
 
         $estados = config('constants.estados');
 
-        return view('admin.dashboard', compact('projects', 'quantityReviews', 'projectsNotAssigned', 'estados'));
+        return view('admin.dashboard', compact('projects', 'quantityProjectsRevised', 'projectsNotAssigned', 'estados'));
     }
 
     public function export()
