@@ -74,6 +74,7 @@
                         <th scope="col" width="60%">Projeto</th>
                         <th scope="col" class="text-center">Estado</th>
                         <th scope="col" class="text-center">Status</th>
+                        <th scope="col" class="text-center">Download</th>
                         <th scope="col" class="text-center" colspan="2">Revisor(es)</th>
 
                     </tr>
@@ -85,6 +86,7 @@
                             <td data-toggle="tooltip" data-placement="top" title="{{ $project->projeto_nome }}">{{ Str::limit($project->projeto_nome, 70) }}</td>
                             <td class="text-center">{{ $project->departamento_estado }}</td>
                             <td class="text-center">@component('components.status', ['status' => $project->status])@endcomponent</td>
+                            <td class="text-center"><a href="/admin/projeto/export/{{ $project->id }}" target="_blank" class="btn btn-info text-white btn-sm" role="button" >Baixar</a></td>
                             <td class="text-center">
                                 <a tabindex="0" class="btn btn-secondary text-white btn-sm" role="button" data-toggle="popover" data-trigger="focus" title="Revisor(es) atribuído(s)" data-content="@component('components.popover', ['data' => $project->reviewers, 'field' => 'name'])@endcomponent">{{ $project->reviewers_count }}</a>
                             </td>
