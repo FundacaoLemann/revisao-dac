@@ -7,6 +7,7 @@ use App\Partner;
 use App\Project;
 use App\Reviewer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -29,6 +30,17 @@ class ProjectController extends Controller
         $project->reviewers()->sync($request->reviewers);
 
         return redirect()->route('home')->with('success', 'Projetos atribuidos com sucesso.');
+    }
+
+    public function export(Project $project)
+    {
+        $pdf = \PDF::loadView('exports.project_pdf', compact('project'));
+
+        $fileName = $project->id . '_' . substr(Str::slug($project->projeto_nome , '-'), 0, 30) . '.pdf';
+
+        $pdf->save(storage_path().'/app/public/projects/'.$fileName);
+
+        return $pdf->download($fileName);
     }
 
     public function store(Request $request)

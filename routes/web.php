@@ -22,6 +22,9 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::get('/projeto/{project}', 'ProjectController@index')->name('project');
+
+    Route::get('/projeto/export/{project}', 'ProjectController@export')->name('project.pdf');
+
     Route::post('/projeto/{project}', 'ProjectController@update');
 
 
