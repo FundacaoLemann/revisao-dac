@@ -398,3 +398,10 @@
         <td align="justify" valign="top"><h4>Há mais alguma informação que deveríamos saber sobre vocês ou seu projeto?</h4>{{ $project->projeto_info_extra }}</td>
     </tr>
 </table>
+
+
+<table width="100%" border="0">
+    <tr>
+        <td align="justify" valign="top"><h4>Carta de compromisso da secretaria de ensino ou mantenedor:</h4>@if(!empty($project->projeto_doc)) <a href="{{ asset('storage/'.$project->projeto_doc) }}" target="_blank">Acessar documento</a> @else Não possue. @endif</td>
+    </tr>
+</table>
